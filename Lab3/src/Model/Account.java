@@ -10,7 +10,7 @@ package Model;
  */
 public class Account {
     private String bankName;
-    private String rountingNumber;
+    private String routingNumber;
     private String accountNumber;
     private int balance;
     public String getBankName() {
@@ -22,11 +22,11 @@ public class Account {
     }
 
     public String getRountingNumber() {
-        return rountingNumber;
+        return routingNumber;
     }
 
     public void setRountingNumber(String rountingNumber) {
-        this.rountingNumber = rountingNumber;
+        this.routingNumber = rountingNumber;
     }
 
     public String getAccountNumber() {
@@ -43,6 +43,11 @@ public class Account {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+    
+    @Override
+    public String toString(){
+        return bankName;
     }
    
 }

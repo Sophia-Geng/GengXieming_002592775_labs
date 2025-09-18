@@ -17,11 +17,11 @@ public class AccountDirectory {
         this.accounts = new ArrayList<Account> ();
     }
     
-    public ArrayList<Account> getAccount() {
+    public ArrayList<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccount(ArrayList<Account> account) {
+    public void setAccounts(ArrayList<Account> account) {
         this.accounts = account;
     }
     
@@ -33,5 +33,14 @@ public class AccountDirectory {
     
     public void deleteAccount(Account account){
         accounts.remove(account);
+    }
+    
+    public Account searchAccount(String accountNumber){
+        for (Account a:accounts){
+            if(a.getAccountNumber().contains(accountNumber)){
+                return a;
+            }
+        }
+        return null;
     }
 }
