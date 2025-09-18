@@ -23,14 +23,16 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     private JPanel UserProcessContainer;
     private AccountDirectory accountdirectory;
     private Account account;
-    public ViewAccountJPanel(JPanel container, AccountDirectory directory,Account accounts) {
+    public ViewAccountJPanel(JPanel container, AccountDirectory accountDirectory, Account account1) {
         initComponents();
         UserProcessContainer=container;
-        accountdirectory=directory;
-        account=accounts;
-        
-        refreshTextFields();
+        this.accountdirectory = accountDirectory; 
+        this.account = account1;                   
+    
+        populateFields();    
         setViewMode();
+        refreshTextFields();
+        
     }
 
     /**
@@ -80,6 +82,11 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -169,15 +176,22 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "All fields are mandatory");
             return;
         }
-        account.setRountingNumber(routingNumber);
+        account.setRoutingNumber(routingNumber);
         account.setAccountNumber(accountNumber);
         account.setBankName(bankName);
         JOptionPane.showMessageDialog(null, "Account successfully updated", "warning", JOptionPane.WARNING_MESSAGE);
         
-        setViewMode();
+        refreshTextFields();
         
         
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        setViewMode();
+        
+        
+     
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -192,7 +206,14 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
-
+    private void populateFields() {
+        if (account != null) {
+            fieldAccountNum.setText(account.getAccountNumber());
+            fieldBankName.setText(account.getBankName());
+            fieldRoutingNum.setText(account.getRoutingNumber());
+          
+        }
+    }
     private void refreshTextFields() {
         fieldAccountNum.setEnabled(false);
             fieldBankName.setEnabled(false);

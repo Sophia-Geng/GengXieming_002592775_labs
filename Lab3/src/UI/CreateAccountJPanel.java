@@ -6,6 +6,8 @@ package UI;
 
 import Model.Account;
 import Model.AccountDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -141,7 +143,9 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        UserProcessContainer.remove(this);
+        CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+        layout.previous(UserProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -156,6 +160,10 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "All fields are mandatory","Error",JOptionPane.ERROR_MESSAGE);
          return;
     }
+        else{
+             JOptionPane.showMessageDialog(this, "Successfully created！","Create",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
         try{
             balance=Integer.parseInt(fieldBalance.getText());
         }catch(Exception e){
@@ -164,10 +172,18 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         }
         
         Account a=accountdirectory.addAccount();
-        a.setRountingNumber(routingNumber);
+        a.setRoutingNumber(routingNumber);
         a.setBalance(balance);
         a.setBankName(bankName);
         a.setAccountNumber(accountNumber);
+
+
+        fieldRoutingNum.setText("");
+        fieldAccountNum.setText("");
+        fieldBankName.setText("");
+        fieldBalance.setText("");
+
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
 

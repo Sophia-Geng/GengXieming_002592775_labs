@@ -21,13 +21,15 @@ public class Account {
         this.bankName = bankName;
     }
 
-    public String getRountingNumber() {
+    public String getRoutingNumber() {
         return routingNumber;
     }
 
-    public void setRountingNumber(String rountingNumber) {
-        this.routingNumber = rountingNumber;
+    public void setRoutingNumber(String routingNumber) {
+        this.routingNumber = routingNumber;
     }
+
+ 
 
     public String getAccountNumber() {
         return accountNumber;

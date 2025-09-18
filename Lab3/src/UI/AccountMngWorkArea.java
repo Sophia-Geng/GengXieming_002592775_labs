@@ -17,11 +17,11 @@ public class AccountMngWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form AccountMng
      */
-    JPanel userProcessContainer;
+    JPanel UserProcessContainer;
     AccountDirectory accountDirectory;
     public AccountMngWorkArea(JPanel container,AccountDirectory directory) {
         initComponents();
-        userProcessContainer =container;
+        UserProcessContainer =container;
         accountDirectory =directory; 
         
         
@@ -79,20 +79,20 @@ public class AccountMngWorkArea extends javax.swing.JPanel {
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
         // TODO add your handling code here:
-        CreateAccountJPanel panel=new CreateAccountJPanel(userProcessContainer,accountDirectory);
-        userProcessContainer.add("CreateAccountJPanel",panel);
+        CreateAccountJPanel panel=new CreateAccountJPanel(UserProcessContainer,accountDirectory);
+        UserProcessContainer.add("CreateAccountJPanel",panel);
         
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        CardLayout layout=(CardLayout)UserProcessContainer.getLayout();
+        layout.next(UserProcessContainer);
         
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     private void btnManageAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAccountActionPerformed
-        ManageAccountsJPanel panel=new ManageAccountsJPanel(userProcessContainer,accountDirectory);
-        userProcessContainer.add("ManageAccountJPanel",panel);
+        ManageAccountsJPanel panel=new ManageAccountsJPanel(UserProcessContainer,accountDirectory);
+        UserProcessContainer.add("ManageAccountJPanel",panel);
         
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        CardLayout layout=(CardLayout)UserProcessContainer.getLayout();
+        layout.next(UserProcessContainer);
     }//GEN-LAST:event_btnManageAccountActionPerformed
 
 

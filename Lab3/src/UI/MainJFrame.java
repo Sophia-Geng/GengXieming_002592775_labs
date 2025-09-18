@@ -21,7 +21,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         this.accountDirectory= new AccountDirectory();
-        generateDemoData();
+       
     }
 
     /**
@@ -131,8 +131,4 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane2;
     // End of variables declaration//GEN-END:variables
 
-    private void generateDemoData() {
-      Account newAccount =accountDirectory.addAccount();
-     
-    }
 }

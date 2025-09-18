@@ -165,7 +165,7 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
             
             if(foundAccount !=null){
                 
-                ViewAccountJPanel panel =new ViewAccountJPanel(UserProcessContainer);
+                ViewAccountJPanel panel =new ViewAccountJPanel(UserProcessContainer, accountdirectory, foundAccount);
                 UserProcessContainer.add("ViewAccountJPanel",panel);
                 CardLayout layout =(CardLayout)UserProcessContainer.getLayout();
                 layout.next(UserProcessContainer);    
@@ -206,7 +206,7 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
         if(selectedRow>=0){
             Account selectedAccount=(Account)tblAccounts.getValueAt(selectedRow, 0);
             
-            ViewAccountJPanel panel=new ViewAccountJPanel(UserProcessContainer,accountdirectory);
+            ViewAccountJPanel panel=new ViewAccountJPanel(UserProcessContainer, accountdirectory, selectedAccount);
             UserProcessContainer.add("ViewAccountJPanel",panel);
             CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
             layout.next(UserProcessContainer);
@@ -235,7 +235,7 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
        for(Account a: accountdirectory.getAccounts()){
            Object[] row =new Object[4];
            row[0]=a;
-           row[1]=a.getRountingNumber();
+           row[1]=a.getRoutingNumber();
            row[2]=a.getAccountNumber();
            row[3]=String.valueOf(a.getBalance());
            
