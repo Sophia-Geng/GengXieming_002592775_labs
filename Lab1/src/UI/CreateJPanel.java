@@ -16,10 +16,11 @@ public class CreateJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateJPanel
      */
-    Product product;
-    public CreateJPanel(Product p) {
+    // Product = "汽车"这个类型
+    Product product;// "我的汽车"这个具体对象
+    public CreateJPanel(Product p) {// "这辆车"作为参数传入
         initComponents();
-        product = p;
+        product = p;// 把"这辆车"变成"我的汽车"
     }
 
     /**

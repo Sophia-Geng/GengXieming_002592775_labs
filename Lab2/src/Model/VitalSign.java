@@ -14,24 +14,6 @@ public class VitalSign {
     double bloodPressure;
     int pulse;
     boolean isConcious;
-    String sos;
-    String kkt;
-
-    public String getSos() {
-        return sos;
-    }
-
-    public void setSos(String sos) {
-        this.sos = sos;
-    }
-
-    public String getKkt() {
-        return kkt;
-    }
-
-    public void setKkt(String kkt) {
-        this.kkt = kkt;
-    }
 
     public String getDate() {
         return date;
