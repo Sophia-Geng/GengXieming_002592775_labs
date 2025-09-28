@@ -4,6 +4,11 @@
  */
 package UI.supplier;
 
+import Model.Product;
+import Model.Supplier;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DELL
@@ -13,8 +18,14 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageProductCatalogJPanel
      */
-    public ManageProductCatalogJPanel() {
+    Supplier supplier;
+    JPanel workArea;
+    public ManageProductCatalogJPanel(JPanel workArea,Supplier supplier) {
         initComponents();
+        this.workArea=workArea;
+        this.supplier=supplier;
+        
+        refreshTable();
     }
 
     /**
@@ -30,13 +41,25 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void refreshTable() {
+        DefaultTableModel model=(DefaultTableModel)tblProducts.getModel();
+        model.setRowCount(0);
+        for(Product p:supplier.getProductCatalog().getProductCatalog()){
+            Object row[] =new Object[3];
+            row[0]=p;
+            row[1]=p.getId();
+            row[2]=p.getPrice();
+            model.addRow(row);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

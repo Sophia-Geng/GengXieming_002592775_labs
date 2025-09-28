@@ -20,7 +20,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminWorkAreaJPanel
      */
-    public AdminWorkAreaJPanel() {
+    public AdminWorkAreaJPanel(JPanel mainWorkArea,SupplierDirectory supplierDirectory) {
         initComponents();
         this.mainWorkArea=mainWorkArea;
         this.supplierDirectory=supplierDirectory;
@@ -42,11 +42,14 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         menuBar = new javax.swing.JPanel();
         btnManageSuppliers = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
+        lblWelcome = new javax.swing.JLabel();
         workArea = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        menuBar.setBackground(new java.awt.Color(255, 255, 255));
 
         btnManageSuppliers.setText("Manage Suppliers");
         btnManageSuppliers.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +65,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblWelcome.setText("<WelcomeMsg>");
+
         javax.swing.GroupLayout menuBarLayout = new javax.swing.GroupLayout(menuBar);
         menuBar.setLayout(menuBarLayout);
         menuBarLayout.setHorizontalGroup(
@@ -71,7 +76,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageSuppliers)
                 .addGap(61, 61, 61)
                 .addComponent(btnLogOut)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
+                .addComponent(lblWelcome)
+                .addGap(110, 110, 110))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,21 +86,24 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnManageSuppliers)
-                    .addComponent(btnLogOut))
+                    .addComponent(btnLogOut)
+                    .addComponent(lblWelcome))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jSplitPane2.setTopComponent(menuBar);
 
+        workArea.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 587, Short.MAX_VALUE)
+            .addGap(0, 888, Short.MAX_VALUE)
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 476, Short.MAX_VALUE)
         );
 
         jSplitPane2.setRightComponent(workArea);
@@ -102,7 +112,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
-        ManageSuppliers panel=new ManageSuppliers(WorkArea,supplierDirectory);
+        ManageSuppliers panel=new ManageSuppliers(workArea,supplierDirectory);
         workArea.add("ManageSupplierAdministrative",panel);
         CardLayout layout =(CardLayout)workArea.getLayout();
         layout.next(workArea);
@@ -129,6 +139,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnManageSuppliers;
     private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel menuBar;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables

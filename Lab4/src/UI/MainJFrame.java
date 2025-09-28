@@ -4,6 +4,9 @@
  */
 package UI;
 
+import Model.SupplierDirectory;
+import java.awt.CardLayout;
+
 /**
  *
  * @author DELL
@@ -13,8 +16,14 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    SupplierDirectory supplierDirectory;
     public MainJFrame() {
         initComponents();
+        supplierDirectory =new SupplierDirectory();
+        setSize(800,600);
+        setResizable(false);
+        
+        setLoginScreen();
     }
 
     /**
@@ -26,17 +35,26 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainWorkArea = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        mainWorkArea.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 620, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(487, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,6 +95,14 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
 
+    private void setLoginScreen() {
+       LoginScreen ls=new LoginScreen(mainWorkArea,supplierDirectory);
+       mainWorkArea.add("LoginScreen",ls);
+       CardLayout layout =(CardLayout) mainWorkArea.getLayout();
+       layout.next(mainWorkArea);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
 }

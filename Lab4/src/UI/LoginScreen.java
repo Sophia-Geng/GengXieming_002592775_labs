@@ -6,6 +6,8 @@ package UI;
 
 import Model.Supplier;
 import Model.SupplierDirectory;
+import UI.admin.AdminWorkAreaJPanel;
+import UI.supplier.SupplierWorkAreaJPanel;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -61,6 +63,11 @@ public class LoginScreen extends javax.swing.JPanel {
         cmbRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cmbSuppliers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSuppliers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSuppliersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,6 +119,15 @@ public class LoginScreen extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void cmbSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSuppliersActionPerformed
+        // TODO add your handling code here:
+        
+        if (cmbSuppliers.getSelectedItem()==null){
+            return;
+        }
+        selectedSupplier=(Supplier)cmbSuppliers.getSelectedItem();
+    }//GEN-LAST:event_cmbSuppliersActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
@@ -129,7 +145,7 @@ public class LoginScreen extends javax.swing.JPanel {
         cmbRoles.addItem(supplierPanel);
 }
 
-    private void populateSupplierCombo() {
+    public void populateSupplierCombo() {
        cmbSuppliers.removeAllItems();
        
        for(Supplier supplier:supplierDirectory.getSupplierList()){
