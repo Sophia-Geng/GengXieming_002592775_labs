@@ -33,7 +33,13 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         txtId.setText(String.valueOf(this.product.getId()));
         txtPrice.setText(String.valueOf(this.product.getPrice()));
 
-        //refreshTable();
+        // 设置初始状态：只有Update按钮可用，其他编辑功能都禁用
+        btnAddFeature.setEnabled(false);
+        btnSave.setEnabled(false);
+        txtName.setEditable(false);
+        txtPrice.setEditable(false);
+
+        refreshTable();
     }
 
     /**
@@ -240,19 +246,31 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void saveFeatures() {
-        DefaultTableModel model =(DefaultTableModel)tblFeatures.getModel();
-        
-        for(int i=0;i<model.getRowCount();i++){
+    DefaultTableModel model = (DefaultTableModel)tblFeatures.getModel();
+    
+    for(int i = 0; i < model.getRowCount(); i++){
+        if(i < product.getFeatures().size()) {
             Feature currentFeature = product.getFeatures().get(i);
-            currentFeature.setName(tblFeatures.getValueAt(i, 0).toString());
-            currentFeature.setValue(tblFeatures.getValueAt(i, 1));
+            
+            Object nameValue = tblFeatures.getValueAt(i, 0);
+            Object valueValue = tblFeatures.getValueAt(i, 1);
+            
+            if(nameValue != null) {
+                currentFeature.setName(nameValue.toString());
+            }
+            if(valueValue != null) {
+                currentFeature.setValue(valueValue);
+            }
         }
+    
+}
         
     }
 
     private void btnAddFeatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFeatureActionPerformed
         // TODO add your handling code here:
-        Feature newFeature=product.addNewFeature();
+         saveFeatures();
+        Feature newFeature=product.addNewFeature(product);
         newFeature.setName("New Feature");
         newFeature.setValue("Type Value Here");
         saveFeatures();
@@ -280,9 +298,9 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         
         for(Feature f:product.getFeatures()){
             Object row[]=new Object[2];
-            row[0]=f;
-            row[1]=f.getValue()==null?"Empty":f.getValue().toString();
-            model.addRow(row);
+            row[0] = f.getName(); 
+        row[1] = f.getValue() == null ? "Empty" : f.getValue().toString();
+        model.addRow(row);
         
         }
     }

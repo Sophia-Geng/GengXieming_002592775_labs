@@ -24,6 +24,7 @@ public class Product {
     public Product() {
         count++;
         id = count;
+        this.features = new ArrayList<>();
         
     }
 
@@ -56,8 +57,8 @@ public class Product {
         this.features = features;
     }
     
-    public Feature addNewFeature(){
-        Feature feature=new Feature(this);
+    public Feature addNewFeature(Product p){
+        Feature feature=new Feature(p);
         features.add(feature);
         return feature;
     }
